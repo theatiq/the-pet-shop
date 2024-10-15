@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The-Peddy-Shop</title>
+    <link rel="shortcut icon" href="./images/logo.webp" type="image/x-icon" />
+    <link rel="stylesheet" href="./styles/style.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@4.12.12/dist/full.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      /* Spinner styles */
+      #spinner {
+        display: block;
+        width: 40px;
+        height: 40px;
+        border: 4px solid rgba(0, 0, 0, 0.1);
+        border-top: 4px solid #000;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+        margin: 20px auto;
+      }
+
+      /* Spinner animation */
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header Section Started -->
+    <header>
+      <!-- navbar starts -->
+      <div
+        class="navbar bg-base-100 lg:w-11/12 mx-auto my-5 flex justify-between"
+      >
+        <div class="navbar-start">
+          <div class="dropdown">
+            <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-5 w-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M4 6h16M4 12h8m-8 6h16"
+                />
+              </svg>
+            </div>
+            <ul
+              tabindex="0"
+              class="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+            >
+              <li><a>Home</a></li>
+              <li><a>Shop</a></li>
+              <li><a>Contact</a></li>
+            </ul>
+          </div>
+          <img src="./images/logo.webp" alt="Logo" />
+          <a class="btn btn-ghost text-xl">Peddy</a>
+        </div>
+        <div class="navbar-center hidden lg:flex">
+          <ul class="menu menu-horizontal px-1">
+            <li><a>Home</a></li>
+            <li><a>Shop</a></li>
+            <li><a>Contact</a></li>
+          </ul>
+        </div>
+        <div class="navbar-end">
+          <img src="./images/icons8-user-32.png" alt="" />
+        </div>
+      </div>
+      <!-- navbar ends -->
+      <!-- Banner starts -->
+      <div class="hero lg:w-11/12 mx-auto">
+        <div class="hero-content text-center">
+          <div class="w-8/12">
+            <h2 class="text-2xl mb-5">Bringing Families Together 🔥</h2>
+            <h1 class="text-5xl font-bold">
+              Your Path to Adoption Starts Here
+            </h1>
+            <p class="py-6">
+              If you want to adopt a. You are in the right place. Click view
+              more button for details.
+            </p>
+
+            <button class="btn btn-primary">
+              <a href="#adopt">View More</a>
+            </button>
+            <div class="flex justify-center">
+              <img class="lg:w-7/12" src="./images/pet.webp" alt="" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Banner ends -->
+    </header>
+    <!-- Header Section Ended -->
+    <!-- Main Section Started-->
+    <main>
+      <div class="hero lg:w-11/12 mx-auto">
+        <div class="hero-content text-center">
+          <div class="w-8/12">
+            <h1 id="adopt" class="text-5xl font-bold">
+              Adopt Your Best Friend
+            </h1>
+            <p class="py-6">
+              We have large range of pets. You can easily choose from them. If
+              not matched please put a message. We will let you know.
+            </p>
+            <div
+              id="category-buttons"
+              class="mb-10 lg:flex justify-between"
+            ></div>
+
+            <div class="mb-10 lg:flex justify-between">
+              <button class="text-xl font-bold rounded-full">
+                Best Deal For You
+              </button>
+              <button
+                onclick="showSortedData()"
+                class="btn bg-blue-500 text-2xl font-bold rounded-xl"
+              >
+                Sort by Price
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="spinner"></div>
+
+      <div class="lg:w-11/12 mx-auto flex mb-24 gap-5">
+        <!-- Error Message -->
+        <div
+          id="no-data"
+          class="hidden grid grid-cols-1 mx-auto place-items-center lg:w-8/12 border rounded-lg"
+        >
+          <img src="./images/error.webp" alt="" />
+          <h1 class="text-4xl font-bold">No Information Available</h1>
+          <p class="text-2xl">
+            Sorry your required pet is not available at the moment. We will let
+            you know when available.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:w-8/12">
+          <div
+            id="all-pets"
+            class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
+          >
+            <!-- card 1 start -->
+            <!-- <div class="border rounded-lg">
+              <div>
+                <img src="./images/pet.webp" alt="" />
+              </div>
+              <div class="pl-5">
+                <h1 class="text-2xl font-bold">Mister Tartosh</h1>
+                <div class="flex gap-3">
+                  <img
+                    src="https://img.icons8.com/?size=24&id=115221&format=png"
+                    alt=""
+                  />
+                  <p>Breed: Golder Retriever</p>
+                </div>
+                <div class="flex gap-3">
+                  <img
+                    src="https://img.icons8.com/?size=24&id=84997&format=png"
+                    alt=""
+                  />
+                  <p>Birth: 2024</p>
+                </div>
+                <div class="flex gap-3">
+                  <img
+                    src="https://img.icons8.com/?size=24&id=97765&format=png"
+                    alt=""
+                  />
+                  <p>Gender: Female</p>
+                </div>
+                <div class="flex gap-3">
+                  <img
+                    src="https://img.icons8.com/?size=24&id=CoGBixMJpBuh&format=png"
+                    alt=""
+                  />
+                  <p>Price: 200$</p>
+                </div>
+              </div>
+              <div class="border border-b-stone-100 mb-2 mx-3"></div>
+              <div class="flex justify-center gap-5">
+                <button>
+                  <img
+                    src="https://img.icons8.com/?size=50&id=24816&format=png"
+                    alt=""
+                  />
+                </button>
+                <button class="btn text-blue-600" type="button">Adopt</button>
+                <button class="btn text-blue-600" type="button">Details</button>
+              </div>
+            </div> -->
+            <!-- card 1 end -->
+          </div>
+        </div>
+        <div
+          id="add-image"
+          class="grid grid-cols-1 lg:w-4/12 border rounded-lg"
+        >
+          <div
+            id="indv-img"
+            class="grid sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-2 content-start mt-5 px-5"
+          >
+            <!-- <img src="./images/pet.webp" alt="" /> -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Sample Modal -->
+      <!-- Open the modal using ID.showModal() method -->
+      <!-- <button class="btn" onclick="my_modal_5.showModal()">open modal</button> -->
+
+      <dialog
+        id="my_modal_5"
+        class="modal modal-bottom sm:modal-middle"
+      ></dialog>
+
+      <!-- adopt modal start-->
+      <!-- Open the modal using ID.showModal() method -->
+      <!-- <button class="btn" onclick="my_modal_4.showModal()">open modal</button> -->
+
+      <dialog id="my_modal_4" class="modal modal-bottom sm:modal-middle">
+        <div class="modal-box flex flex-col items-center space-y-5">
+          <img
+            class="handshake"
+            src="https://img.icons8.com/?size=64&id=43627&format=png"
+            alt="Handshake"
+          />
+          <p class="py-4">Adoption Process is start for your pet.</p>
+          <div
+            class="congrats text-2xl font-bold"
+            id="congratsText"
+            style="display: block"
+          >
+            Congrats!
+          </div>
+          <div class="countdown text-4xl font-bold" id="countdown">3</div>
+          <div class="modal-action">
+            <form method="dialog">
+              <!-- if there is a button in form, it will close the modal -->
+              <button class=""></button>
+            </form>
+          </div>
+        </div>
+      </dialog>
+    </main>
+    <!-- Main Section Ended-->
+    <!-- Footer Section Started-->
+    <footer>
+      <footer class="footer bg-neutral text-neutral-content p-10">
+        <nav>
+          <div class="flex items-center gap-2">
+            <img src="./images/logo.webp" alt="" />
+            <h6 class="font-bold text-xl">Peddy</h6>
+          </div>
+          <a class="link link-hover"
+            >Location: av. Washington 165, NY CA 54003
+          </a>
+          <a class="link link-hover">Phone: +31 85 964 47 25 </a>
+          <a class="link link-hover">Email: info@yourdomain.com </a>
+          <a class="link link-hover">Openings hours: 9.00 AM - 5.00 PM</a>
+          <div class="flex items-center justify-between">
+            <img src="https://img.icons8.com/?size=48&id=118497&format=png" />
+            <img
+              src="https://img.icons8.com/?size=50&id=fJp7hepMryiw&format=png"
+            />
+            <img src="https://img.icons8.com/?size=48&id=19318&format=png" />
+            <img
+              src="https://img.icons8.com/?size=48&id=Xy10Jcu1L2Su&format=png"
+            />
+          </div>
+        </nav>
+        <nav>
+          <h6 class="footer-title">Useful Links</h6>
+          <a class="link link-hover">Home</a>
+          <a class="link link-hover">About us</a>
+          <a class="link link-hover">Animals</a>
+          <a class="link link-hover">Foundation</a>
+          <a class="link link-hover">Contact</a>
+        </nav>
+        <nav>
+          <h6 class="footer-title">Drop a Message</h6>
+          <input
+            class="rounded-md"
+            type="text"
+            placeholder="Enter Your Email"
+          />
+          <button class="link link-hover btn">Subscribe</button>
+        </nav>
+      </footer>
+    </footer>
+    <!-- Footer Section Ended-->
+    <script src="./js/index.js"></script>
+  </body>
+</html>
